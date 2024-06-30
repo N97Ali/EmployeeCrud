@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EmployeeCrud.Models.EmployeeModel>
+
+@{
+    var currentSort = ViewData["CurrentSort"] as string;
+    var currentFilter = ViewData["CurrentFilter"] as string;
+}
+
+<div class="container">
+    <h2 class="mt-4">Employee List</h2>
+
+    <form asp-controller="Employee" asp-action="Index" method="get" class="form-inline mb-3">
+        <div>
+            <input type="text" name="searchString" value="@currentFilter" class="form-control mr-sm-2" placeholder="Search employees...">
+        </div>
+        <div class="pt-10">
+            <button type="submit" class="btn btn-outline-success">Search</button>
+        </div>
+        
+    </form>
+
+    <div class="d-flex justify-content-between mb-3">
+        <a type="button" class="btn btn-success" asp-controller="Employee" asp-action="AddEmployee">Add Employee</a>
+        <div class="btn-group" role="group">
+            <a asp-action="Index" asp-route-sortOrder="name_asc" class="btn btn-primary @(currentSort == "name_asc" ? "active" : "")">Sort A-Z</a>
+            <a asp-action="Index" asp-route-sortOrder="name_desc" class="btn btn-primary @(currentSort == "name_desc" ? "active" : "")">Sort Z-A</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Name</td>
+                    <td>@item.Address</td>
+                    <td>@item.Date</td>
+                    <td>@item.Status</td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

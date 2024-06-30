@@ -1,0 +1,87 @@
+﻿@model EmployeeCrud.Models.MyAccountModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <button type="button" id="btnregister" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Register
+    </button>
+    <button type="button" id="btnSingIn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+        SingIn
+    </button>
+    <!--modelsingin-->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">SingIn Here</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                   
+                    <div class="form-group mb-3">
+                        <input type="email" id="email" class="form-control" placeholder="Name@email.com" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                     
+                    <div class="form-group mb-3">
+                        <input type="password" id="password" class="form-control" placeholder="password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-dark" onclick="Ragister()" type="button" id="Sign">New Here</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" onclick="Sign()" style="display:block" id="btnsign" class="btn btn-primary">SignIn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- RegisterModal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Register Here</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group mb-3">
+                        <input type="text" id="name" class="form-control" placeholder="Name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="email" id="email" class="form-control" placeholder="Name@email.com" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="text" id="phone" class="form-control" placeholder="PhoneNo" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="password" id="password" class="form-control" placeholder="password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="Sign()" class="btn btn-dark" type="button"id="Sign">Already have an account</button>
+                    
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    <button type="button" onclick="Register()" id="btnsave" class="btn btn-primary">Save</button>
+                    <button type="button" onclick="Sign()" style="display:none" id="btnsign" class="btn btn-primary">SignIn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</body>
+</html>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/custom.js"></script>
+
+
